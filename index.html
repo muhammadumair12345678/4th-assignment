@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Table Generator</title>
+</head>
+<body>
+    <h2> Generator</h2>
+    
+    <form id="tableForm">
+        <label for="number">Enter the number:</label>
+        <input type="number" id="number" required>
+        
+        <label for="limit">Enter the limit:</label>
+        <input type="number" id="limit" required>
+        
+        <button type="button" onclick="generateTable()">Generate Table</button>
+    </form>
+
+    <div id="tableResult"></div>
+
+    <script>
+        function generateTable() {
+            var number = parseInt(document.getElementById('number').value);
+            var limit = parseInt(document.getElementById('limit').value);
+            var resultContainer = document.getElementById('tableResult');
+            var tableHTML = '<h3>Generated Table</h3><table border="1"><tr><th>Number</th></tr>';
+
+            if (number < 20) {
+                for (var i = limit; i >= 1; i--) {
+                    tableHTML += '<tr><td>' + number + ' x ' + i + ' = ' + (number * i) + '</td></tr>';
+                }
+            } else {
+                for (var i = 1; i <= limit; i++) {
+                    tableHTML += '<tr><td>' + number + ' x ' + i + ' = ' + (number * i) + '</td></tr>';
+                }
+            }
+
+            tableHTML += '</table>';
+            resultContainer.innerHTML = tableHTML;
+        }
+    </script>
+</body>
+</html>
